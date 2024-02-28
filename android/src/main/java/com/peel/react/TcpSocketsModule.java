@@ -21,7 +21,7 @@ public final class TcpSocketsModule implements ReactPackage {
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<NativeModule>();
 
-        modules.add(new TcpSockets(reactContext));
+        modules.add(new TcpSocketsClass(reactContext));
 
         return modules;
     }

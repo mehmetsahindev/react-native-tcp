@@ -30,15 +30,15 @@ import java.util.concurrent.ExecutionException;
 /**
  * The NativeModule acting as an api layer for {@link TcpSocketManager}
  */
-public final class TcpSockets extends ReactContextBaseJavaModule implements TcpSocketListener {
-    private static final String TAG = "TcpSockets";
+public final class TcpSocketsClass extends ReactContextBaseJavaModule implements TcpSocketListener {
+    private static final String TAG = "TcpSocketsClass";
 
     private boolean mShuttingDown = false;
     private TcpSocketManager socketManager;
 
     private ReactContext mReactContext;
 
-    public TcpSockets(ReactApplicationContext reactContext) {
+    public TcpSocketsClass(ReactApplicationContext reactContext) {
         super(reactContext);
         mReactContext = reactContext;
 
