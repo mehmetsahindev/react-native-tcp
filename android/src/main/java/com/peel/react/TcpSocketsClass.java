@@ -234,4 +234,14 @@ public final class TcpSocketsClass extends ReactContextBaseJavaModule implements
 
         sendEvent("error", eventParams);
     }
+
+    @ReactMethod
+    public void addListener(String eventName) {
+
+    }
+
+    @ReactMethod
+    public void removeListeners(Integer count) {
+
+    }
 }
