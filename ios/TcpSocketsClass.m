@@ -8,13 +8,13 @@
 #import <React/RCTConvert.h>
 #import <React/RCTLog.h>
 
-#import "TcpSockets.h"
-#import "TcpSocketClient.h"
+#import "TcpSocketsClass.h"
+#import "TcpModuleClient.h"
 
 // offset native ids by 5000
-#define COUNTER_OFFSET 5000
+#define MODULE_COUNTER_OFFSET 5000
 
-@interface TcpSockets() {
+@interface TcpSocketsClass() {
 
 @private
     NSMutableDictionary<NSNumber *, RCTResponseSenderBlock> *_pendingSends;
@@ -23,9 +23,9 @@
 }
 @end
 
-@implementation TcpSockets
+@implementation TcpSocketsClass
 {
-    NSMutableDictionary<NSNumber *,TcpSocketClient *> *_clients;
+    NSMutableDictionary<NSNumber *,TcpModuleClient *> *_clients;
     int _counter;
 }
 
@@ -68,7 +68,7 @@ RCT_EXPORT_MODULE()
     }
 }
 
-- (TcpSocketClient *)createSocket:(nonnull NSNumber*)cId
+- (TcpModuleClient *)createSocket:(nonnull NSNumber*)cId
 {
     if (!cId) {
         RCTLogWarn(@"%@.createSocket called with nil id parameter.", [self class]);
@@ -84,7 +84,7 @@ RCT_EXPORT_MODULE()
         return nil;
     }
 
-    _clients[cId] = [TcpSocketClient socketClientWithId:cId andConfig:self];
+    _clients[cId] = [TcpModuleClient socketClientWithId:cId andConfig:self];
 
     return _clients[cId];
 }
@@ -94,7 +94,7 @@ RCT_EXPORT_METHOD(connect:(nonnull NSNumber*)cId
                   port:(int)port
                   withOptions:(NSDictionary *)options)
 {
-    TcpSocketClient *client = _clients[cId];
+    TcpModuleClient *client = _clients[cId];
     if (!client) {
       client = [self createSocket:cId];
     }
@@ -110,7 +110,7 @@ RCT_EXPORT_METHOD(connect:(nonnull NSNumber*)cId
 RCT_EXPORT_METHOD(write:(nonnull NSNumber*)cId
                   string:(NSString *)base64String
                   callback:(RCTResponseSenderBlock)callback) {
-    TcpSocketClient* client = [self findClient:cId];
+    TcpModuleClient* client = [self findClient:cId];
     if (!client) return;
 
     // iOS7+
@@ -131,7 +131,7 @@ RCT_EXPORT_METHOD(listen:(nonnull NSNumber*)cId
                   host:(NSString *)host
                   port:(int)port)
 {
-    TcpSocketClient* client = _clients[cId];
+    TcpModuleClient* client = _clients[cId];
     if (!client) {
       client = [self createSocket:cId];
     }
@@ -144,13 +144,13 @@ RCT_EXPORT_METHOD(listen:(nonnull NSNumber*)cId
     }
 }
 
-- (void)onConnect:(TcpSocketClient*) client
+- (void)onConnect:(TcpModuleClient*) client
 {
     [self sendEventWithName:@"connect"
                        body:@{ @"id": client.id, @"address" : [client getAddress] }];
 }
 
--(void)onConnection:(TcpSocketClient *)client toClient:(NSNumber *)clientID {
+-(void)onConnection:(TcpModuleClient *)client toClient:(NSNumber *)clientID {
     _clients[client.id] = client;
 
     [self sendEventWithName:@"connection"
@@ -166,7 +166,7 @@ RCT_EXPORT_METHOD(listen:(nonnull NSNumber*)cId
 
 - (void)onClose:(NSNumber*) clientID withError:(NSError *)err
 {
-    TcpSocketClient* client = [self findClient:clientID];
+    TcpModuleClient* client = [self findClient:clientID];
     if (!client) {
         RCTLogWarn(@"onClose: unrecognized client id %@", clientID);
     }
@@ -181,16 +181,16 @@ RCT_EXPORT_METHOD(listen:(nonnull NSNumber*)cId
     [_clients removeObjectForKey:clientID];
 }
 
-- (void)onError:(TcpSocketClient*) client withError:(NSError *)err {
+- (void)onError:(TcpModuleClient*) client withError:(NSError *)err {
     NSString *msg = err.localizedFailureReason ?: err.localizedDescription;
     [self sendEventWithName:@"error"
                        body:@{ @"id": client.id, @"error": msg }];
 
 }
 
--(TcpSocketClient*)findClient:(nonnull NSNumber*)cId
+-(TcpModuleClient*)findClient:(nonnull NSNumber*)cId
 {
-    TcpSocketClient *client = _clients[cId];
+    TcpModuleClient *client = _clients[cId];
     if (!client) {
         NSString *msg = [NSString stringWithFormat:@"no client found with id %@", cId];
         [self sendEventWithName:@"error"
@@ -204,7 +204,7 @@ RCT_EXPORT_METHOD(listen:(nonnull NSNumber*)cId
 
 -(void)endClient:(nonnull NSNumber*)cId
 {
-    TcpSocketClient* client = [self findClient:cId];
+    TcpModuleClient* client = [self findClient:cId];
     if (!client) return;
 
     [client end];
@@ -212,14 +212,14 @@ RCT_EXPORT_METHOD(listen:(nonnull NSNumber*)cId
 
 -(void)destroyClient:(nonnull NSNumber*)cId
 {
-    TcpSocketClient* client = [self findClient:cId];
+    TcpModuleClient* client = [self findClient:cId];
     if (!client) return;
 
     [client destroy];
 }
 
 -(NSNumber*)getNextId {
-    return @(_counter++ + COUNTER_OFFSET);
+    return @(_counter++ + MODULE_COUNTER_OFFSET);
 }
 
 - (void)setPendingSend:(RCTResponseSenderBlock)callback forKey:(NSNumber *)key

@@ -22,15 +22,15 @@ enum RCTTCPError
 
 typedef enum RCTTCPError RCTTCPError;
 
-@class TcpSocketClient;
+@class TcpModuleClient;
 
 @protocol SocketClientDelegate <NSObject>
 
-- (void)onConnect:(TcpSocketClient*)client;
-- (void)onConnection:(TcpSocketClient*)client toClient:(NSNumber *)clientID;
+- (void)onConnect:(TcpModuleClient*)client;
+- (void)onConnection:(TcpModuleClient*)client toClient:(NSNumber *)clientID;
 - (void)onData:(NSNumber *)clientID data:(NSData *)data;
-- (void)onClose:(TcpSocketClient*)client withError:(NSError *)err;
-- (void)onError:(TcpSocketClient*)client withError:(NSError *)err;
+- (void)onClose:(TcpModuleClient*)client withError:(NSError *)err;
+- (void)onError:(TcpModuleClient*)client withError:(NSError *)err;
 - (NSNumber*)getNextTag;
 - (void)setPendingSend:(RCTResponseSenderBlock)callback forKey:(NSNumber *)key;
 - (RCTResponseSenderBlock)getPendingSend:(NSNumber *)key;
@@ -39,7 +39,7 @@ typedef enum RCTTCPError RCTTCPError;
 
 @end
 
-@interface TcpSocketClient : NSObject<GCDAsyncSocketDelegate>
+@interface TcpModuleClient : NSObject<GCDAsyncSocketDelegate>
 
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, weak) id<SocketClientDelegate> clientDelegate;

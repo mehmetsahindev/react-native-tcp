@@ -2,12 +2,10 @@
 
 node's [net](https://nodejs.org/api/net.html) API in React Native
 
-This module is used by [Peel](http://www.peel.com/)
-
 ## Install
 
 ```
-npm install gajjartejas/react-native-tcp --save
+npm install mehmetsahindev/react-native-tcp --save
 
 npx pod-install
 or
@@ -43,5 +41,3 @@ client.on("data", function (data) {
 1. Use Typescript
 
 PR's welcome!
-
-_originally forked from [react-native-udp](https://github.com/tradle/react-native-udp)_

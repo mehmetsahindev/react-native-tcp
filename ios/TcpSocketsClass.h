@@ -3,11 +3,11 @@
  * All rights reserved.
  */
 
-#import "TcpSocketClient.h"
+#import "TcpModuleClient.h"
 
 #import <React/RCTEventEmitter.h>
 #import "CocoaAsyncSocket/GCDAsyncSocket.h"
 
-@interface TcpSockets : RCTEventEmitter<SocketClientDelegate>
+@interface TcpSocketsClass : RCTEventEmitter<SocketClientDelegate>
 
 @end

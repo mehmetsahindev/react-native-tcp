@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13BE3DEE1AC21097009241FE /* TcpSockets.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BE3DED1AC21097009241FE /* TcpSockets.m */; };
-		7350006B1AFF9AB600ED3C82 /* TcpSocketClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7350006A1AFF9AB600ED3C82 /* TcpSocketClient.m */; };
+		13BE3DEE1AC21097009241FE /* TcpSocketsClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BE3DED1AC21097009241FE /* TcpSocketsClass.m */; };
+		7350006B1AFF9AB600ED3C82 /* TcpModuleClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 7350006A1AFF9AB600ED3C82 /* TcpModuleClient.m */; };
 		73D9377D1AFF9EBE00450142 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D9377C1AFF9EBE00450142 /* CFNetwork.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,11 +25,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		134814201AA4EA6300B7C361 /* libTcpSockets.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTcpSockets.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		13BE3DEC1AC21097009241FE /* TcpSockets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpSockets.h; sourceTree = "<group>"; };
-		13BE3DED1AC21097009241FE /* TcpSockets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TcpSockets.m; sourceTree = "<group>"; };
-		735000691AFF9AB600ED3C82 /* TcpSocketClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpSocketClient.h; sourceTree = "<group>"; };
-		7350006A1AFF9AB600ED3C82 /* TcpSocketClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TcpSocketClient.m; sourceTree = "<group>"; };
+		134814201AA4EA6300B7C361 /* libTcpSocketsClass.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTcpSocketsClass.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		13BE3DEC1AC21097009241FE /* TcpSocketsClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpSocketsClass.h; sourceTree = "<group>"; };
+		13BE3DED1AC21097009241FE /* TcpSocketsClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TcpSocketsClass.m; sourceTree = "<group>"; };
+		735000691AFF9AB600ED3C82 /* TcpModuleClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TcpModuleClient.h; sourceTree = "<group>"; };
+		7350006A1AFF9AB600ED3C82 /* TcpModuleClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TcpModuleClient.m; sourceTree = "<group>"; };
 		73D9377C1AFF9EBE00450142 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -48,7 +48,7 @@
 		134814211AA4EA7D00B7C361 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				134814201AA4EA6300B7C361 /* libTcpSockets.a */,
+				134814201AA4EA6300B7C361 /* libTcpSocketsClass.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -57,10 +57,10 @@
 			isa = PBXGroup;
 			children = (
 				73D9377C1AFF9EBE00450142 /* CFNetwork.framework */,
-				735000691AFF9AB600ED3C82 /* TcpSocketClient.h */,
-				7350006A1AFF9AB600ED3C82 /* TcpSocketClient.m */,
-				13BE3DEC1AC21097009241FE /* TcpSockets.h */,
-				13BE3DED1AC21097009241FE /* TcpSockets.m */,
+				735000691AFF9AB600ED3C82 /* TcpModuleClient.h */,
+				7350006A1AFF9AB600ED3C82 /* TcpModuleClient.m */,
+				13BE3DEC1AC21097009241FE /* TcpSocketsClass.h */,
+				13BE3DED1AC21097009241FE /* TcpSocketsClass.m */,
 				96EDB0A91C10C33B00D41E94 /* CocoaAsyncSocket */,
 				134814211AA4EA7D00B7C361 /* Products */,
 			);
@@ -69,8 +69,6 @@
 		96EDB0A91C10C33B00D41E94 /* CocoaAsyncSocket */ = {
 			isa = PBXGroup;
 			children = (
-				96EDB0AA1C10C33B00D41E94 /* GCDAsyncSocket.h */,
-				96EDB0AB1C10C33B00D41E94 /* GCDAsyncSocket.m */,
 			);
 			path = CocoaAsyncSocket;
 			sourceTree = "<group>";
@@ -78,9 +76,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		58B511DA1A9E6C8500147676 /* TcpSockets */ = {
+		58B511DA1A9E6C8500147676 /* TcpSocketsClass */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "TcpSockets" */;
+			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "TcpSocketsClass" */;
 			buildPhases = (
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -90,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = TcpSockets;
+			name = TcpSocketsClass;
 			productName = RCTDataManager;
-			productReference = 134814201AA4EA6300B7C361 /* libTcpSockets.a */;
+			productReference = 134814201AA4EA6300B7C361 /* libTcpSocketsClass.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -109,11 +107,12 @@
 					};
 				};
 			};
-			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "TcpSockets" */;
+			buildConfigurationList = 58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "TcpSocketsClass" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 58B511D21A9E6C8500147676;
@@ -121,7 +120,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				58B511DA1A9E6C8500147676 /* TcpSockets */,
+				58B511DA1A9E6C8500147676 /* TcpSocketsClass */,
 			);
 		};
 /* End PBXProject section */
@@ -131,8 +130,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7350006B1AFF9AB600ED3C82 /* TcpSocketClient.m in Sources */,
-				13BE3DEE1AC21097009241FE /* TcpSockets.m in Sources */,
+				7350006B1AFF9AB600ED3C82 /* TcpModuleClient.m in Sources */,
+				13BE3DEE1AC21097009241FE /* TcpSocketsClass.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +172,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../react-native/React/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -207,6 +207,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/../../react-native/React/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -224,7 +225,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = TcpSockets;
+				PRODUCT_NAME = TcpSocketsClass;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -240,7 +241,7 @@
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_NAME = TcpSockets;
+				PRODUCT_NAME = TcpSocketsClass;
 				SKIP_INSTALL = YES;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -249,7 +250,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "TcpSockets" */ = {
+		58B511D61A9E6C8500147676 /* Build configuration list for PBXProject "TcpSocketsClass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511ED1A9E6C8500147676 /* Debug */,
@@ -258,7 +259,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "TcpSockets" */ = {
+		58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "TcpSocketsClass" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				58B511F01A9E6C8500147676 /* Debug */,

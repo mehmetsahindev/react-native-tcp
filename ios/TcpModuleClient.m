@@ -5,13 +5,13 @@
 
 #import <netinet/in.h>
 #import <arpa/inet.h>
-#import "TcpSocketClient.h"
+#import "TcpModuleClient.h"
 
 #import <React/RCTLog.h>
 
-NSString *const RCTTCPErrorDomain = @"RCTTCPErrorDomain";
+NSString *const RCTTCPErrorDomainModule = @"RCTTCPErrorDomain";
 
-@interface TcpSocketClient()
+@interface TcpModuleClient()
 {
 @private
     GCDAsyncSocket *_tcpSocket;
@@ -22,7 +22,7 @@ NSString *const RCTTCPErrorDomain = @"RCTTCPErrorDomain";
 
 @end
 
-@implementation TcpSocketClient
+@implementation TcpModuleClient
 
 + (id)socketClientWithId:(nonnull NSNumber *)clientID andConfig:(id<SocketClientDelegate>)delegate
 {
@@ -174,7 +174,7 @@ NSString *const RCTTCPErrorDomain = @"RCTTCPErrorDomain";
 
 - (void)socket:(GCDAsyncSocket *)sock didAcceptNewSocket:(GCDAsyncSocket *)newSocket
 {
-    TcpSocketClient *inComing = [[TcpSocketClient alloc] initWithClientId:[_clientDelegate getNextId]
+    TcpModuleClient *inComing = [[TcpModuleClient alloc] initWithClientId:[_clientDelegate getNextId]
                                                                 andConfig:_clientDelegate
                                                                 andSocket:newSocket];
     [_clientDelegate onConnection: inComing
@@ -215,7 +215,7 @@ NSString *const RCTTCPErrorDomain = @"RCTTCPErrorDomain";
 {
     NSDictionary *userInfo = [NSDictionary dictionaryWithObject:errMsg forKey:NSLocalizedDescriptionKey];
 
-    return [NSError errorWithDomain:RCTTCPErrorDomain
+    return [NSError errorWithDomain:RCTTCPErrorDomainModule
                                code:RCTTCPInvalidInvocationError
                            userInfo:userInfo];
 }
