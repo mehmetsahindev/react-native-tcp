@@ -57,7 +57,7 @@ function TcpSocket(options: ?{ id: ?number }) {
 util.inherits(TcpSocket, stream.Duplex);
 
 TcpSocket.prototype._debug = function () {
-  if (__DEV__) {
+  if (__DEV__ && false) {
     const args = [].slice.call(arguments);
     args.unshift("socket-" + this._id);
     console.log.apply(console, args);
