@@ -40,6 +40,10 @@ RCT_EXPORT_MODULE()
     return self;
 }
 
++ (BOOL) requiresMainQueueSetup {
+  return YES;
+}
+
 - (NSNumber*)getNextTag {
     return [NSNumber numberWithLong:_tag++];
 }
